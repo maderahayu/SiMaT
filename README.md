@@ -1,0 +1,3 @@
+# SiMaT
+
+Sistem Informasi Magang
