@@ -38,7 +38,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link active" href="{{route('home')}}">
+            <a class="nav-link active" href="">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -48,18 +48,22 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Mahasiswa Magang
+            Data Magang
         </div>
 
+        
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('magang.daftarList') }}">
+            <i class="fas fa-fw fa-cog"></i>
+                <span>Daftar Anak Magang</span></a>
+        </li>
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-cog"></i>
-                <span>Logbook Magang</span></a>
+                <span>Evaluasi Anak Magang</span></a>
         </li>
-
-               
-
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -85,8 +89,6 @@
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-
-
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
