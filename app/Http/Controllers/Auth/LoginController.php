@@ -12,7 +12,7 @@ class LoginController extends Controller
  
     use AuthenticatesUsers;
  
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HomeMagang;
  
     public function __construct()
     {
@@ -27,6 +27,7 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
        
+        // dd($input);
         if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
         {
             if (auth()->user()->type == 'supervisor') {

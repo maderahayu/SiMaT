@@ -26,6 +26,7 @@ Route::middleware(['auth', 'user-access:supervisor'])->group(function () {
     
     Route::get('/supervisor/home', [HomeController::class, 'supervisorHome'])->name('supervisor.home');
     Route::get('/supervisor/daftarAnakMagang', [SupervisorController::class, 'daftarAnakMagang'])->name('magang.daftarList');
+    Route::get('/supervisor/daftarAnakMagang/edit/{id}', [SupervisorController::class, 'edit'])->name('magang.edit');
 });
 
 

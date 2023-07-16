@@ -28,6 +28,9 @@ class PemagangFactory extends Factory
             $mulai->format('Y-m-d H:i:s').' +30 days',
             $mulai->format('Y-m-d H:i:s').' +3 months'
         );
+        $kampus = ["Universitas Indonesia", "Telkom University", "Institut Teknologi Telkom Surabaya",
+                 "Universitas Pelita Harapan", "Universitas Gajah Mada", "Universitas Veteran Jawa Timuer",
+                 "Universitas Negeri Surbaya", "Insitut Teknologi Sepuluh November"];
 
         // $faker = Factory::create();
 
@@ -38,14 +41,13 @@ class PemagangFactory extends Factory
                     return \App\Models\User::find($attributes['userId'])->email;},
                 'namaPemagang' => function (array $attributes) {
                     return \App\Models\User::find($attributes['userId'])->nama;},
-                'fotoProfil' => '',
-                'namaUniversitas' => '',
+                'fotoProfil' => $this->faker->image('public/storage/images',640,480, null, false),
+                'namaUniversitas' => $this->faker->randomElement($kampus),
                 'tglMulai' => $mulai,
                 'tglSelesai' => $selesai,
                 'noTelp' => $this->faker->phoneNumber(),
             ];
         }
-        // return $hasil;
         
     }
 }

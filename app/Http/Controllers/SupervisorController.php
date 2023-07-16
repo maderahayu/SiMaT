@@ -16,4 +16,9 @@ class SupervisorController extends Controller
         // dd($anakMagang);
         return view('supervisor.daftar', ['magang' =>$anakMagang]);
     }
+
+    public function edit(String $id) {
+        $anakMagang = DB::table('tblPemagang')->where('pemagangId', '=', $id)->get();
+        return view('supervisor.edit', ['magang' =>$anakMagang]);
+    }
 }
