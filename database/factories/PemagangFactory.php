@@ -3,9 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Pemagang;
+use App\Models\Supervisor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use app\Models\User;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -22,7 +23,7 @@ class PemagangFactory extends Factory
     public function definition(): array
     {
         
-        $users = DB::table('users')->where('type', '=', false)->get();
+        // $users = DB::table('users')->where('type', '=', false)->get();
         $mulai = $this->faker->dateTimeBetween('- 1 months', '+3 months');
         $selesai = $this->faker->dateTimeBetween(
             $mulai->format('Y-m-d H:i:s').' +30 days',
@@ -32,22 +33,30 @@ class PemagangFactory extends Factory
                  "Universitas Pelita Harapan", "Universitas Gajah Mada", "Universitas Veteran Jawa Timuer",
                  "Universitas Negeri Surbaya", "Insitut Teknologi Sepuluh November"];
 
-        // $faker = Factory::create();
+        // $user = User::where('type', 0)->inRandomOrder()->first();
+        $user = User::where('type', 0)
+            ->whereNotIn('id', Pemagang::pluck('userId')->toArray())
+            ->inRandomOrder()
+            ->first();
+        $supervisorId = Supervisor::inRandomOrder()->value('supervisorId');
 
-        if($users){
-            return   [
-                'userId' => \App\Models\User::factory(),
-                'email' => function (array $attributes) {
-                    return \App\Models\User::find($attributes['userId'])->email;},
-                'namaPemagang' => function (array $attributes) {
-                    return \App\Models\User::find($attributes['userId'])->nama;},
-                'fotoProfil' => $this->faker->image('public/storage/images',640,480, null, false),
-                'namaUniversitas' => $this->faker->randomElement($kampus),
-                'tglMulai' => $mulai,
-                'tglSelesai' => $selesai,
-                'noTelp' => $this->faker->phoneNumber(),
-            ];
-        }
+
+        return   [
+            'userId' => $user->id,
+            'namaPemagang' => $user->nama,
+            'email' => $user->email,
+            'fotoProfil' => $this->faker->image('public/storage/images', 640, 480, "person", false),
+            'namaUniversitas' => $this->faker->randomElement($kampus),
+            'tglMulai' => $mulai,
+            'tglSelesai' => $selesai,
+            'noTelp' => $this->faker->phoneNumber(),
+            'supervisorId' => $supervisorId,
+            'namaKelompok'=> $this->faker->company()
+        ];
+
+        // if($users){
+            
+        // }
         
     }
 }

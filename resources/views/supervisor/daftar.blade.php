@@ -35,7 +35,7 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item active">
-            <a class="nav-link" href="{{ route('magang.daftarList') }}">
+            <a class="nav-link" href="{{ route('sup.daftarList') }}">
                 <i class="fas fa-fw fa-list"></i>
                 <span>Daftar Anak Magang</span></a>
         </li>
@@ -108,8 +108,8 @@
                                             <td>{{ $mg->tglMulai}}</td>
                                             <td>{{ $mg->tglSelesai}}</td>
                                             <td>
-                                                <a class="btn btn-success" href="{{ route('magang.edit', $mg->pemagangId) }}" role="button"><i class="fa fa-pen"></i></a>
-                                                <a class="btn btn-danger" href="#" role="button"><i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-success" href="{{ route('sup.editPemagang', $mg->pemagangId) }}" role="button"><i class="fa fa-pen"></i></a>
+                                                <a class="btn btn-danger" href="" role="button"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

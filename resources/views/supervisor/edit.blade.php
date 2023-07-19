@@ -40,8 +40,9 @@
                         <label for="tglSelesai" class="form-label">Tanggal Selesai</label>
                         <input type="date" class="form-control" value="{{$mg->tglSelesai}}" require>
                     </div>
-                    <div class="mb-3">
-                        <button type="button" class="btn btn-primary">Simpan</button>
+                    <div class="col-md-12 text-center">
+                        <a class="btn btn-secondary" href="{{ route('sup.daftarList') }}" style="height:40px;width:200px"><i class="fas fa-chevron-circle-left fa-lg" style="margin-right:20px"></i>Cancel</a>
+                        <button type="button" class="btn btn-primary" style="height:40px;width:200px"><i class="fas fa-save fa-lg" style="margin-right:20px"></i>   Simpan</button>
                     </div>
                 </form>
                 @endforeach

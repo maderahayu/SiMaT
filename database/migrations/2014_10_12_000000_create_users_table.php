@@ -16,9 +16,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('password');
-            $table->boolean('type')->default(false);
+            $table->boolean('type')->default(true);
             // 0: pemagang, 1: supervisor
-            $table->rememberToken();
             $table->timestamps();
         });
     }

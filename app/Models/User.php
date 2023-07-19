@@ -29,17 +29,18 @@ class User extends Authenticatable
 
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
-    public function childPemagang()
+    public function supervisor()
     {
-        return $this->hasOne(Pemagang::class, 'userId');
+        return $this->hasOne(Supervisor::class);
+    }
 
+    // Relationship with InternStudent
+    public function magang()
+    {
+        return $this->hasOne(Pemagang::class);
     }
 
     /**

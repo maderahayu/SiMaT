@@ -37,7 +37,7 @@
         
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('magang.daftarList') }}">
+            <a class="nav-link" href="{{ route('sup.daftarList') }}">
             <i class="fas fa-fw fa-cog"></i>
                 <span>Daftar Anak Magang</span></a>
         </li>

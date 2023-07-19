@@ -25,8 +25,9 @@ Route::middleware(['auth', 'user-access:pemagang'])->group(function () {
 Route::middleware(['auth', 'user-access:supervisor'])->group(function () {
     
     Route::get('/supervisor/home', [HomeController::class, 'supervisorHome'])->name('supervisor.home');
-    Route::get('/supervisor/daftarAnakMagang', [SupervisorController::class, 'daftarAnakMagang'])->name('magang.daftarList');
-    Route::get('/supervisor/daftarAnakMagang/edit/{id}', [SupervisorController::class, 'edit'])->name('magang.edit');
+    Route::get('/supervisor/daftarAnakMagang', [SupervisorController::class, 'daftarAnakMagang'])->name('sup.daftarList');
+    Route::get('/supervisor/daftarAnakMagang/edit/{id}', [SupervisorController::class, 'editAnakMagang'])->name('sup.editPemagang');
+    // Route::get('/supervisor/daftarAnakMagang/delete/{id}', [SupervisorController::class, 'delete'])->name('sup.deletePemagang');
 });
 
 
