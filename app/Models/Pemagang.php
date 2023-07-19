@@ -21,6 +21,16 @@ class Pemagang extends Model
      */
     protected $table = 'tblPemagang';
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function supervisor()
+    {
+        return $this->belongsTo(Supervisor::class, 'supervisorId');
+    }
+
     protected $fillable = [
         'userId',
         'namaPemagang',
@@ -43,11 +53,10 @@ class Pemagang extends Model
         'tglSelesai' => 'datetime',
     ];
 
-    public function parentUser()
-    {
-        return $this->belongsTo(Pemagang::class, 'pemagangId');
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(Pemagang::class, 'pemagangId');
+    // }
 
 
-    
 }

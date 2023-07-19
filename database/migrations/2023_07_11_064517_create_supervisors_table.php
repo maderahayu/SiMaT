@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tblSupervisor', function (Blueprint $table) {
             $table->id('supervisorId');
+            $table->integer('userId');
             $table->string('namaSupervisor');
             $table->string('fotoProfil')->nullable();
             $table->string('noTelp');

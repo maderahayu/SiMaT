@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tblPemagang', function (Blueprint $table) {
             $table->id('pemagangId');
             $table->integer('userId');
+            $table->integer('supervisorId');
             $table->string('email');
             $table->string('namaPemagang');
             $table->string('namaUniversitas');
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->date('tglMulai')->nullable();
             $table->date('tglSelesai')->nullable();
             $table->string('noTelp');
+            $table->String('namaKelompok');
             $table->timestamps();
         });
     }

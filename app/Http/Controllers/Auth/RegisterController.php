@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\Pemagang;
+use App\Models\Supervisor;
 use App\Models\User;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -33,7 +34,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HomeSupervisor;
 
     /**
      * Create a new controller instance.
@@ -74,17 +75,29 @@ class RegisterController extends Controller
             'nama' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            // 'type' => 0
+            'type' => 1
         ]);   
         // echo $users->id;
-        $magang = Pemagang::create([
-            'userId' => $user->id,
-            'email' => $data['email'],
-            'namaPemagang' => $user['nama'],
-            'namaUniversitas' => '',
-            'fotoProfil' => '',
-            'noTelp' => '',
-        ]);  
+
+        // dd($user->type);
+
+        if($user->type == 'supervisor'){
+            Supervisor::create([
+                'namaSupervisor' => $user->nama,
+                'userId' => $user->id,
+                'noTelp' => ''
+            ]);
+        } elseif ($user->type == 'pemagang'){
+            $magang = Pemagang::create([
+                'userId' => $user->id,
+                'email' => $data['email'],
+                'namaPemagang' => $user['nama'],
+                'namaUniversitas' => '',
+                'fotoProfil' => '',
+                'noTelp' => '',
+            ]); 
+        }
+         
 
         // dd($users);
     
